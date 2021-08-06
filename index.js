@@ -1,15 +1,19 @@
+const rectangle = require('./rectangle');
 var rect = require('./rectangle');
 
 function solveReact(l,b) {
     console.log("solving rectangle area and perimeter");
 
-    if(l<=0 || b<=0){
-        console.log("length and breadth must be greater than 0");
-    }
-    else{
-        console.log("Perimeter of rectangle is : " + rect.perimeter(l,b));
-        console.log("Area of rectangle is : " + rect.area(l,b));
-    }
+    rect(l,b, (err,rectangle) => {
+        if(err) {
+            console.log("ERROR:", err.message);
+        }
+        else{
+            console.log("The Area of the Rectangle is : " + rectangle.area());
+            console.log("The Perimeter of the Rectangle is : " + rectangle.perimeter());
+        }
+    });
+    console.log("This statement is after the call to rect()");
 }
 
 solveReact(2,4);
